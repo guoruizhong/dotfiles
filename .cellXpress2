@@ -1,0 +1,4 @@
+proj_root_dir=/home/Plates
+data_root_dir=/home/Plates
+raw_root_dir=/home/Microscope
+thread_number=20

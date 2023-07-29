@@ -1,0 +1,103 @@
+# Conky configuration file
+# (c) Lit-Hsin Loo
+
+alignment top_right
+
+border_width 1
+
+update_interval 3.0
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 4
+
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Use Xft?
+use_xft yes
+#xftfont DejaVu Sans Mono:size=10
+xftfont Bitstream Vera Sans Mono:size=10
+xftalpha 0.8
+text_buffer_size 2048
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 30
+gap_y 50
+
+#maximum_width 300
+minimum_size 5 5
+net_avg_samples 2
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_class conky
+own_window_type normal
+#own_window_type desktop
+own_window_transparent yes
+own_window_argb_visual yes
+#own_window_argb_value 255
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+background no
+
+stippled_borders 0
+
+short_units yes
+
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+default_graph_size 0 60
+default_bar_size   0 6
+
+TEXT
+#${scroll 16 $nodename - $sysname $kernel on $machine | }
+${font Bitstream:size=16}$alignc${tztime Asia/Singapore %Y-%b-%d (%a) %l:%M%p}$font
+
+${color #ffcb48}$alignc$nodename$color ($kernel, $machine)
+${color #98c2c7}${alignc}Uptime:$color$uptime_short
+${color grey}$hr$color
+${color #98c2c7}CPU usage:$color ${freq_g}GHz - ${cpu cpu0}% ${color #78af78}${cpubar cpu0}$color
+${color #98c2c7}Temp:$color ${color grey}CPU$color ${hwmon 1 temp 1}°C${color grey}, Case$color ${acpitemp}°C${color grey}
+#${color grey}, HDD1$color ${hddtemp /dev/sda}°C${color grey}, HDD2${hddtemp /dev/sdb}°C
+${color #78af78}${cpugraph cpu0 78af78 ff0077 -t}
+${color #98c2c7}RAM usage:$color ${mem}B/${memmax}B - $memperc% ${color #78af78}${membar}$color
+${color #78af78}${memgraph 78af78 ff0077 -t}
+${color #98c2c7}Networking: ${color grey}Up$color ${upspeed eno1} ${color grey}Down$color ${downspeed eno1}
+${color #78af78}${upspeedgraph eno1 30,145 78af78 a3a3a3 -t}$alignr${downspeedgraph eno1 30,145 78af78 a3a3a3 -t}
+${color #98c2c7}Processes:$color $processes ${color #98c2c7}Running:$color $running_processes
+${color #98c2c7}Name                PID   CPU%   MEM%
+${color grey} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+${color grey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${color grey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+${color grey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+${color grey} ${top name 5} ${top pid 5} ${top cpu 5} ${top mem 5}
+$hr
+${color #98c2c7}Swap Usage:$color ${swap}B/${swapmax}B - $swapperc% ${color #78af78}${swapbar}$color
+${color #98c2c7}File systems:$color
+${color grey} /$color      ${fs_used /}B/${fs_size /}B ${color #78af78}${goto 185}${fs_bar /}$color
+${color grey} Home$color   ${fs_used /home}B/${fs_size /home}B ${color #78af78}${goto 185}${fs_bar /home}$color
+${color grey} Plates$color ${fs_used /home/Plates}B/${fs_size /home/Plates}B ${color #78af78}${goto 185}${fs_bar /home/Plates}$color
+
+
+
+
