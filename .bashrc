@@ -23,6 +23,17 @@ PS1='\[\033[1;36m\]\u\[\033[1;37m\] @\[\033[1;32m\] \h:\[\033[1;33m\] \w\[\033[0
 # PS1="\e[0;31m\e[47m\u@\h \w> \e[m"
 # PS1="\e[34m\u@\h:~> \e[36m"
 
+
+
+# R stuff
+alias r="radian"
+
+# tmux
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/zhonggr/opt/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -38,7 +49,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-
-# R stuff
-alias r="radian"

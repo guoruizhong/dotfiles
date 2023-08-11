@@ -1,7 +1,11 @@
 options(
   ##radian.prompt = "\033[0;34m>\033[0m ",
-  radian.tab_size = 3,
+  radian.color_scheme = "native",
+  radian.tab_size = 4,
+  # radian.editing_mode = "emacs",
   radian.complete_while_typing = FALSE,
+  radian.auto_match = TRUE,
+  # radian.completion_prefix_length = 2,
   radian.highlight_matching_bracket = TRUE,
   radian.suppress_reticulate_message = TRUE
-  )
+)

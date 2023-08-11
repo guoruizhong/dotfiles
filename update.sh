@@ -22,3 +22,6 @@
 git add .
 git commit -m "update function"
 git push -u origin main
+
+### remove git
+# rm -rf .git

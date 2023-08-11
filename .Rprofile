@@ -1,8 +1,9 @@
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
 # options(repos = c(CRAN = "https://mirrors.pku.edu.cn/CRAN/"))
 # options(repos = c(CRAN = "https://mirrors.upm.edu.my/CRAN/"))
+# .libPaths("~/R/library")
+# message("Using library: ", .libPaths()[1])
 
-options(useFancyQuotes = FALSE)
 
 options(error = function() {
   calls <- sys.calls()
@@ -38,4 +39,17 @@ options(languageserver.formatting_style = function(options) {
 if (interactive() && Sys.getenv("RSTUDIO") == "") {
   Sys.setenv(TERM_PROGRAM = "vscode")
   source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
+}
+
+### t disables the original simple plot watcher provided by vscode-R session watcher 
+### (which replays user graphics into a png file) and use httpgd as the graphics device 
+### and opens a new WebView tab in VSCode to show the graphics.
+if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
+  if ("httpgd" %in% .packages(all.available = TRUE)) {
+    options(vsc.plot = FALSE)
+    options(device = function(...) {
+      httpgd::hgd(silent = TRUE)
+      .vsc.browser(httpgd::hgd_url(), viewer = "Beside")
+    })
+  }
 }
